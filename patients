@@ -1,0 +1,67 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+public class patients
+{
+    protected static ArrayList<String> patientList;
+    protected static String patientName;
+	protected static Scanner in;
+	String lookUp;
+    
+    public patients()
+    {
+        
+    }
+    
+    public static ArrayList<String> patientList()
+    {
+      patientList= new ArrayList<String>();
+      in = new Scanner(System.in);
+      System.out.println();
+      boolean go = false;
+      String stop = "q";
+      
+      while (go != true)
+      {
+          System.out.print("Add the names of your patients or q to Quit: ");
+          patientName = in.next();
+          patientList.add(patientName);
+          
+          if (patientName.equalsIgnoreCase(stop))
+          {
+              go = true;
+              patientList.remove(patientList.size()-1);
+              System.out.println();
+              System.out.println(patientList);
+          }
+      }
+      return patientList;
+    }
+    
+    public void patientsInfo()
+    {
+    	System.out.print("What patient's info are you looking for? ");
+    	lookUp = in.next();
+    	for (int i = 0; i < patients.patientList.size();i++)
+    	{
+    		if (lookUp.equalsIgnoreCase(patients.patientList.get(i)))
+    		{
+    			String leftAlignFormat = "| %-12s | %-12s | %-12s | %-12s|%n";
+
+    			System.out.format("+--------------+--------------+--------------+-------------+%n");
+    			System.out.format("| Patients     | History      | Medication   | appointment |%n");
+    			System.out.format("+--------------+--------------|--------------|-------------+%n");
+
+    			for (int j = 0; j < 1; j++) {
+    			    System.out.format(leftAlignFormat,i +  " " + patients.patientList.get(i),history.history.get(i),medicine.medicine.get(i),appointment.appointment.get(i));
+    			}
+
+    			System.out.format("+--------------+--------------+--------------+-------------+%n");
+ 
+    		}
+    	
+    	}
+    	
+    }
+    
+}
+    
