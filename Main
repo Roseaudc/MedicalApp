@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+public class Main
+{
+public static void main(String[]args)
+    {
+        Doctor doctor = new Doctor ();
+        User user = new User();
+        patients patients = new patients();
+        history history = new history();
+        medicine medicine = new medicine();
+        Menu menu = new Menu();
+        user.setUp();
+        doctor.login();
+        appointment appointment = new appointment();
+        boolean stuff = false;
+        while (stuff == false){
+        if (user.getUserName().equals(doctor.getUserName1()) && user.getPassword().equals(doctor.getPassword1()))
+        {
+            System.out.println("Welcome Dr. " + user.getName() + "!");
+            stuff = true;
+        }
+        else
+        {
+            System.out.println("You've entered incorrect Username and Password!");
+            doctor.login();
+        }
+        
+    }
+    patients.patientList();
+    history.history();
+    medicine.medicine();
+    appointment.appointment();
+String leftAlignFormat = "| %-12s | %-12s | %-12s | %-12s|%n";
+
+System.out.format("+--------------+--------------+--------------+-------------+%n");
+System.out.format("| Patients     | History      | Medication   | appointment |%n");
+System.out.format("+--------------+--------------|--------------|-------------+%n");
+
+for (int i = 0; i < patients.patientList.size(); i++) {
+    System.out.format(leftAlignFormat,i +  " " + patients.patientList.get(i),history.history.get(i),medicine.medicine.get(i),appointment.appointment.get(i));
+}
+
+System.out.format("+--------------+--------------+--------------+-------------+%n");
+
+menu.optionMenu();
+String answer;
+Scanner in = new Scanner(System.in);
+boolean loop = false;
+System.out.println("Before you exit, do you want to look up any patient info? ");
+answer = in.next();
+while (loop != true)
+{
+	if (answer.equalsIgnoreCase("Yes"))
+	{
+		menu.patientsInfo();
+		System.out.print("Do you want another patient's information? ");
+		answer = in.next();
+	}
+	
+	else if (answer.equalsIgnoreCase("NO"))
+	{
+		System.out.println("The app will now close!");
+		loop = true;
+	}
+	
+	else 
+	{
+		System.out.print("You've entered something wrong! Try again! ");
+		answer = in.next();
+	}
+	
+	}
+    }
+}
