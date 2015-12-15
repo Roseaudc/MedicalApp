@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class history 
+{
+    protected static ArrayList<String> history = new ArrayList<String>();
+    protected Scanner in = new Scanner(System.in);
+    protected String prescribe;
+    
+    public history()
+    {
+        
+    }
+    /**adds user input to history arraylist
+      *@throws IllegalArgumentException if input length is less than zero
+        */
+    
+    public void history()
+    {
+        for (int i = 0; i < patients.patientList.size();i++)
+        {
+            System.out.print("What is " + patients.patientList.get(i) + "'s health history? ");
+            history.add(in.nextLine());
+            if (history.get(i).length() <= 0)
+            {
+                throw new IllegalArgumentException("Illegal history: " + history);
+            }
+            
+        }
+    }
+
+}
